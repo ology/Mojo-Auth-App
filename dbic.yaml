@@ -1,0 +1,3 @@
+db:
+    dsn: 'dbi:SQLite:dbname=auth.db'
+    #TraceLevel: 1
