@@ -11,7 +11,7 @@
 %= end
 % if ($accounts) {
     %= tag 'hr'
-    <b>Users:</b>
+    %= tag b => 'Users:'
     <ul>
 %   while (my $account = $accounts->next) {
       <li>
