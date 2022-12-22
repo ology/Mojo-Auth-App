@@ -5,8 +5,9 @@ New user:
     %= include 'main/_credentials'
     %= submit_button 'Add'
 %= end
-% if ( $accounts ) {
-%   while ( my $account = $accounts->next ) {
+% if ($accounts) {
+%   while (my $account = $accounts->next) {
+    <a href="<%= url_for('remove')->query(user => $account->name) %>">x</a>
     <%= $account->id %>: <%= $account->name %> - <%= $account->created %>
     %= tag 'br'
 %   }
