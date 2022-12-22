@@ -14,11 +14,13 @@ isa_ok $t->app->schema, 'AuthEg::DB::Schema';
 my $test_user = 'test-' . time();
 my $test_pass = 'abc123';
 
-isa_ok $t->app->add( $test_user, $test_pass ), 'AuthEg::DB::Schema::Result::Account';
+my $got = $t->app->add( $test_user, $test_pass );
+isa_ok $got, 'AuthEg::DB::Schema::Result::Account';
 
 is $t->app->auth( $test_user, $test_pass ), 1, 'auth';
 
-isa_ok $t->app->list_accounts, 'DBIx::Class::ResultSet';
+$got = $t->app->list_accounts;
+isa_ok $got, 'DBIx::Class::ResultSet';
 
 ok $t->app->remove($test_user), 'remove';
 ok !$t->app->remove('bogus'), 'bogus';
