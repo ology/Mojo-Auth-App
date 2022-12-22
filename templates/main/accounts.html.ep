@@ -7,7 +7,7 @@
     %= submit_button 'Add'
 %= end
 % if ($accounts) {
-    <hr>
+    %= tag 'hr'
     <ul>
 %   while (my $account = $accounts->next) {
       <li>
@@ -20,7 +20,7 @@
         ]
         <b><%= $account->name %></b> (<%= $account->id %>) <%= $account->created %>
       </li>
-    %= tag 'br'
+      %= tag 'br'
 %   }
     </ul>
 % }
