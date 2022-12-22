@@ -5,7 +5,6 @@
 %= tag 'hr'
 <p><b>New user:</b></p>
 %= form_for add => (method => 'post') => begin
-    %= hidden_field user => $user
     %= include 'main/_credentials'
     %= submit_button 'Add', class => 'btn btn-sm btn-success'
 %= end
