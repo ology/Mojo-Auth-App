@@ -7,7 +7,7 @@ New user:
 %= end
 % if ($accounts) {
 %   while (my $account = $accounts->next) {
-    <a href="<%= url_for('remove')->query(user => $account->name) %>">x</a>
+    <a href="<%= url_for('remove')->query(user => $account->name) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
     <%= $account->id %>: <%= $account->name %> - <%= $account->created %>
     %= tag 'br'
 %   }
