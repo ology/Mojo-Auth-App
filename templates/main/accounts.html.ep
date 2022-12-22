@@ -1,12 +1,12 @@
 % layout 'default';
 %= tag h1 => 'Accounts'
-%= tag h3 => "Hello $user!"
+<h3>Hello <%= ucfirst $user %>!</h3>
 %= include 'main/_flash'
 <p><b>New user:</b></p>
 %= form_for add => (method => 'post') => begin
     %= hidden_field user => $user
     %= include 'main/_credentials'
-    %= submit_button 'Add'
+    %= submit_button 'Add', class => 'btn btn-sm btn-success'
 %= end
 % if ($accounts) {
     %= tag 'hr'
