@@ -1,3 +1,5 @@
 ---
 secrets:
   - c6d9360cf26e09be9e23b497716fcb8e7b5d2c1d
+test_user: fred
+test_pass: flintstone
