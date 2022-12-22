@@ -3,6 +3,8 @@
 %= include 'main/_flash'
 <p><b>New user:</b></p>
 %= form_for add => (method => 'post') => begin
+    %= input => 'hidden', $user
+    %= hidden_field user => $user
     %= include 'main/_credentials'
     %= submit_button 'Add'
 %= end
@@ -15,7 +17,7 @@
 %     if ($account->name eq $user) {
         -
 %     } else {
-        <a href="<%= url_for('remove')->query(user => $account->id) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
+        <a href="<%= url_for('remove')->query(id => $account->id, user => $user) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
 %     }
         ]
         <b><%= $account->name %></b> (<%= $account->id %>) <%= $account->created %>
