@@ -4,6 +4,7 @@
 %= include 'main/_flash'
 %= form_for login => (method => 'post') => begin
     %= include 'main/_credentials'
+    %= tag 'p'
     %= submit_button 'Login', class => 'btn btn-sm btn-primary'
 %= end
 
