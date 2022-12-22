@@ -22,7 +22,8 @@ $t->get_ok('/')
 $t->post_ok('/login' => form => { username => $config->{test_user}, password => $config->{test_pass} })
   ->status_is(200)
   ->session_ok
-  ->session_is('/auth' => 1);
+  ->session_is('/auth' => 1)
+  ->session_is('/user' => $config->{test_user});
 
 # Test accessing a protected page
 $t->get_ok('/authed/accounts?user=foo')
