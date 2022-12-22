@@ -6,6 +6,7 @@
     %= submit_button 'Add'
 %= end
 % if ($accounts) {
+    <hr>
     <ul>
 %   while (my $account = $accounts->next) {
       <li>
@@ -14,7 +15,7 @@
       </li>
     %= tag 'br'
 %   }
-    <ul>
+    </ul>
 % }
 %= tag 'p'
 %= link_to Logout => 'logout'
