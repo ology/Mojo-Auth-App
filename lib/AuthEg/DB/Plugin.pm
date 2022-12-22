@@ -43,7 +43,7 @@ sub register {
     $app->helper(list_accounts => sub {
         my ($c) = @_;
 
-        my $result = $c->schema->resultset('Account');
+        my $result = $c->schema->resultset('Account')->search({}, { order_by => 'name' });
 
         return $result;
     });
