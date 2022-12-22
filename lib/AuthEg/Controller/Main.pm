@@ -42,7 +42,7 @@ sub accounts ($self) {
 sub new_user ($self) {
     my $result = $self->add($self->param('username'), $self->param('password'));
 
-    if ( $result ) {
+    if ($result) {
         $self->flash(message => 'User added');
     }
     else {
