@@ -15,7 +15,7 @@
 %     if ($account->name eq $user) {
         -
 %     } else {
-        <a href="<%= url_for('remove')->query(user => $account->name) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
+        <a href="<%= url_for('remove')->query(user => $account->id) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
 %     }
         ]
         <b><%= $account->name %></b> (<%= $account->id %>) <%= $account->created %>

@@ -52,9 +52,9 @@ sub new_user ($self) {
 }
 
 sub delete_user ($self) {
-    my $user = $self->param('user');
+    my $id = $self->param('id');
 
-    my $result = $self->remove($user);
+    my $result = $self->remove($id);
 
     if ($result) {
         $self->flash(message => 'User removed');
