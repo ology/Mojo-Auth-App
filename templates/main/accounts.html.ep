@@ -1,3 +1,4 @@
+% layout 'default';
 %= tag h1 => 'Accounts'
 %= tag h3 => "Hello $user!"
 %= include 'main/_flash'
@@ -13,14 +14,10 @@
     <ul>
 %   while (my $account = $accounts->next) {
       <li>
-        [
-%     if ($account->name eq $user) {
-        -
-%     } else {
-        <a href="<%= url_for('remove')->query(id => $account->id, user => $user) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
+%     if ($account->name ne $user) {
+        <a href="<%= url_for('remove')->query(id => $account->id, user => $user) %>" class="btn btn-sm btn-secondary" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
 %     }
-        ]
-        <b><%= $account->name %></b> (<%= $account->id %>) <%= $account->created %>
+        <b><%= ucfirst $account->name %></b> (<%= $account->id %>) <%= $account->created %>
       </li>
       %= tag 'br'
 %   }
