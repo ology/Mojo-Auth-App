@@ -7,7 +7,7 @@
 %= form_for add => (method => 'post') => begin
     %= include 'main/_credentials'
     %= tag 'p'
-    %= submit_button 'Add', class => 'btn btn-sm btn-primary'
+    %= submit_button 'Add', class => 'btn btn-primary'
 %= end
 % if ($accounts) {
     %= tag 'hr'
