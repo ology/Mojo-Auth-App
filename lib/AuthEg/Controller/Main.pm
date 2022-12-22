@@ -5,10 +5,12 @@ sub index ($self) { $self->render; }
 
 sub login ($self) {
     my $user = $self->param('username');
+
     if ($self->auth($user, $self->param('password'))) {
         $self->session(auth => 1, user => $user);
         return $self->redirect_to($self->url_for('accounts')->query(user => $user));
     }
+
     $self->flash(error => 'Invalid login');
     $self->redirect_to('index');
 }
@@ -16,6 +18,7 @@ sub login ($self) {
 sub logout ($self) {
     delete $self->session->{auth};
     delete $self->session->{user};
+
     $self->redirect_to('index');
 };
 
@@ -30,7 +33,9 @@ sub authorize ($self) {
 
 sub accounts ($self) {
     my $user = $self->param('user');
+
     my $accounts = $self->list_accounts;
+
     $self->render(
         accounts => $accounts,
         user     => $user,
