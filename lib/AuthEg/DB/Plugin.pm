@@ -1,5 +1,4 @@
 package AuthEg::DB::Plugin;
-
 use Mojo::Base 'Mojolicious::Plugin';
 
 use AuthEg::DB::Schema;
