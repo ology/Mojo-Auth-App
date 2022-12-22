@@ -6,10 +6,10 @@ New user:
     %= submit_button 'Add'
 %= end
 % if ( $accounts ) {
-    % while ( my $account = $accounts->next ) {
+%   while ( my $account = $accounts->next ) {
     <%= $account->id %>: <%= $account->name %> - <%= $account->created %>
     %= tag 'br'
-    % }
+%   }
 % }
 %= tag 'p'
 %= link_to Logout => 'logout'
