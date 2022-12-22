@@ -2,6 +2,7 @@
 %= tag h1 => 'Accounts'
 <h3>Hello <%= ucfirst $user %>!</h3>
 %= include 'main/_flash'
+%= tag 'hr'
 <p><b>New user:</b></p>
 %= form_for add => (method => 'post') => begin
     %= hidden_field user => $user
@@ -23,5 +24,6 @@
 %   }
     </ul>
 % }
+%= tag 'hr'
 %= tag 'p'
 %= link_to Logout => 'logout'
