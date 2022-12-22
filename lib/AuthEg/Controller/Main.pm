@@ -9,7 +9,7 @@ sub login ($self) {
     my $user = $self->param('username');
     if ($self->auth($user, $self->param('password'))) {
         $self->session(auth => 1, user => $user);
-        $self->redirect_to($self->url_for('accounts')->query(user => $user));
+        return $self->redirect_to($self->url_for('accounts')->query(user => $user));
     }
     $self->flash(error => 'Invalid login');
     $self->redirect_to('index');
