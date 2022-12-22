@@ -6,11 +6,15 @@
     %= submit_button 'Add'
 %= end
 % if ($accounts) {
+    <ul>
 %   while (my $account = $accounts->next) {
-    <a href="<%= url_for('remove')->query(user => $account->name) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
-    <b><%= $account->name %></b> (<%= $account->id %>) <%= $account->created %>
+      <li>
+        [<a href="<%= url_for('remove')->query(user => $account->name) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>]
+        <b><%= $account->name %></b> (<%= $account->id %>) <%= $account->created %>
+      </li>
     %= tag 'br'
 %   }
+    <ul>
 % }
 %= tag 'p'
 %= link_to Logout => 'logout'
