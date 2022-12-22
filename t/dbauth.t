@@ -21,11 +21,6 @@ is $t->app->auth($test_user, $test_pass), 1, 'auth';
 
 my $got = $t->app->list_accounts;
 isa_ok $got, 'DBIx::Class::ResultSet';
-my @accounts;
-while (my $account = $got->next) {
-  push @accounts, $account;
-}
-is scalar(@accounts), 1, 'one account';
 
 ok $t->app->remove($user->id), 'remove';
 ok !$t->app->remove(0), 'bogus';
