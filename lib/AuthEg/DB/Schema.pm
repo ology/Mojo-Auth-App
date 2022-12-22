@@ -4,7 +4,8 @@ package AuthEg::DB::Schema;
 use strict;
 use warnings;
 
-use base 'DBIx::Class::Schema::Config'; # NOTE ::Config allows schema connect
+# This module allows schema connect via the dbic.yaml file
+use base 'DBIx::Class::Schema::Config';
 
 __PACKAGE__->load_namespaces;
 
