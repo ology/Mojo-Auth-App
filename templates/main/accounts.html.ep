@@ -12,6 +12,7 @@
 % if ($accounts) {
     %= tag 'hr'
     %= tag b => 'Users:'
+    %= tag 'p'
     <ul>
 %   while (my $account = $accounts->next) {
       <li>
