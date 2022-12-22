@@ -1,6 +1,14 @@
 package AuthEg::Controller::Main;
 use Mojo::Base 'Mojolicious::Controller', -signatures;
 
+sub authorize ($self) {
+    my $auth = $self->session('auth') // '';
+    return 1 if $auth;
+
+    $self->render(text => 'Denied!');
+    return 0;
+}
+
 sub index ($self) { $self->render; }
 
 sub login ($self) {
@@ -21,14 +29,6 @@ sub logout ($self) {
 
     $self->redirect_to('index');
 };
-
-sub authorize ($self) {
-    my $auth = $self->session('auth') // '';
-    return 1 if $auth;
-
-    $self->render(text => 'Denied!');
-    return 0;
-}
 
 sub accounts ($self) {
     my $accounts = $self->list_accounts;
