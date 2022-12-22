@@ -29,7 +29,7 @@ sub register {
 
         my $result = $c->schema->resultset('Account')->create({ name => $user, password => $pass });
 
-        return $result;
+        return $result ? 1 : 0;
     } );
 
     $app->helper( remove => sub {
