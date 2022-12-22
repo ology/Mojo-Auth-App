@@ -1,7 +1,9 @@
+% layout 'default';
 %= tag h1 => 'Login'
+%= tag 'hr'
 %= include 'main/_flash'
 %= form_for login => (method => 'post') => begin
     %= include 'main/_credentials'
-    %= submit_button 'Login'
+    %= submit_button 'Login', class => 'btn btn-sm btn-primary'
 %= end
 
