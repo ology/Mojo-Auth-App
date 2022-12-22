@@ -26,9 +26,10 @@ $t->post_ok('/login' => form => { username => $config->{test_user}, password => 
   ->session_is('/user' => $config->{test_user});
 
 # Test accessing a protected page
-$t->get_ok('/authed/accounts?user=foo')
+$t->get_ok('/authed/accounts?user=' . $config->{test_user})
   ->status_is(200)
   ->content_like(qr/Accounts/)
+  ->content_like(qr/$config->{test_user}/)
   ->element_exists('a[href="/logout"]');
 
 # Test if HTML login form shows up again after logout
