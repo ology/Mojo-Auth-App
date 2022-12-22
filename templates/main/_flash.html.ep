@@ -1,7 +1,7 @@
-% if ( flash('error') ) {
+% if (flash('error')) {
     %= tag h3 => (style => 'color:red') => flash('error')
 % }
-% if ( flash('message') ) {
+% if (flash('message')) {
     %= tag h3 => (style => 'color:green') => flash('message')
 % }
 
