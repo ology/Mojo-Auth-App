@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
-
 use Mojolicious::Lite;
+
+use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(EncodedColumn-Bcrypt);
 
 use lib 'lib';
 use AuthEg::DB::Plugin;
