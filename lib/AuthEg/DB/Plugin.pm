@@ -33,9 +33,9 @@ sub register {
     } );
 
     $app->helper( remove => sub {
-        my ( $c, $user ) = @_;
+        my ( $c, $id ) = @_;
 
-        my $result = $c->schema->resultset('Account')->search({ name => $user })->first;
+        my $result = $c->schema->resultset('Account')->search({ id => $id })->first;
         $result->delete if $result;
 
         return $result ? 1 : 0;
