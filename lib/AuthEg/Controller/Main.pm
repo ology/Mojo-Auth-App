@@ -23,9 +23,9 @@ sub logout ($self) {
 };
 
 sub authorize ($self) {
-    my $session = $self->session('auth') // '';
+    my $auth = $self->session('auth') // '';
 
-    return 1 if $session;
+    return 1 if $auth;
 
     $self->render(text => 'Denied!');
     return 0;
