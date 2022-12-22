@@ -1,9 +1,7 @@
 package AuthEg::Controller::Main;
 use Mojo::Base 'Mojolicious::Controller', -signatures;
 
-sub index ($self) {
-  $self->render();
-}
+sub index ($self) { $self->render; }
 
 sub login ($self) {
     my $user = $self->param('username');
