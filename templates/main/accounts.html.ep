@@ -1,6 +1,6 @@
 %= tag h1 => 'Accounts'
 %= include 'main/_flash'
-New user:
+<p><b>New user:</b></p>
 %= form_for add => (method => 'post') => begin
     %= include 'main/_credentials'
     %= submit_button 'Add'
@@ -8,7 +8,7 @@ New user:
 % if ($accounts) {
 %   while (my $account = $accounts->next) {
     <a href="<%= url_for('remove')->query(user => $account->name) %>" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;">x</a>
-    <%= $account->name %> (<%= $account->id %>) <%= $account->created %>
+    <b><%= $account->name %></b> (<%= $account->id %>) <%= $account->created %>
     %= tag 'br'
 %   }
 % }
