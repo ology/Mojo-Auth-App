@@ -6,6 +6,7 @@
 <p><b>New user:</b></p>
 %= form_for add => (method => 'post') => begin
     %= include 'main/_credentials'
+    %= tag 'p'
     %= submit_button 'Add', class => 'btn btn-sm btn-success'
 %= end
 % if ($accounts) {
