@@ -1,9 +1,9 @@
 use Mojo::Base -strict;
 use Test::More;
 use Test::Mojo::Session;
-use Mojo::File qw( path );
+use Mojo::File qw(curfile);
 
-my $t = Test::Mojo::Session->new( path('script/auth_eg') );
+my $t = Test::Mojo::Session->new(curfile->dirname->sibling('script/auth_eg'));
 
 my $config = $t->app->config;
 isa_ok $config, 'HASH';

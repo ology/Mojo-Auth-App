@@ -1,9 +1,9 @@
 use Mojo::Base -strict;
 use Test::More;
 use Test::Mojo;
-use Mojo::File qw( path );
+use Mojo::File qw(curfile);
 
-my $t = Test::Mojo->new( path('script/auth_eg') );
+my $t = Test::Mojo->new(curfile->dirname->sibling('script/auth_eg'));
 
 my $config = $t->app->config;
 
