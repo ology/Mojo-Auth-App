@@ -2,16 +2,15 @@
 use Mojolicious::Lite;
 
 use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(EncodedColumn-Bcrypt);
-
 use lib 'lib';
 use AuthEg::DB::Plugin;
 
-my ( $name, $pass ) = @ARGV;
+my ($name, $pass) = @ARGV;
 
 die "No user password provided!\n" unless $name && $pass;
 
 plugin 'AuthEg::DB::Plugin';
 
-app->add( $name, $pass );
-
+my $result = app->add($name, $pass);
+die "Can't create user!\n" unless $result;
 print "User: $name created\n";
