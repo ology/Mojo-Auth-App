@@ -46,4 +46,19 @@ sub new_user ($self) {
     $self->redirect_to('accounts');
 }
 
+sub delete_user ($self) {
+    my $user = $self->param('user');
+
+    my $result = $self->remove($user);
+
+    if ($result) {
+        $self->flash(message => 'User removed');
+    }
+    else {
+        $self->flash(error => 'Cannot remove user!');
+    }
+
+    $self->redirect_to('accounts');
+};
+
 1;
