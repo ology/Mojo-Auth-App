@@ -13,9 +13,9 @@ sub startup ($self) {
   $r->post('/login')->to('Main#login') ->name('login');
   $r->get('/logout')->to('Main#logout')->name('logout');
   my $authed = $r->under('/authed')->to('Main#authorize');
-  $authed->get('/accounts')->to('Main#accounts')->name('accounts');
-  $authed->post('/add')    ->to('Main#new_user')->name('new_user');
-  $authed->get('/remove')  ->to('Main#remove')  ->name('remove');
+  $authed->get('/accounts')->to('Main#accounts')   ->name('accounts');
+  $authed->post('/add')    ->to('Main#new_user')   ->name('add');
+  $authed->get('/remove')  ->to('Main#delete_user')->name('remove');
 }
 
 1;
