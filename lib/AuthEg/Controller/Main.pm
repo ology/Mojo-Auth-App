@@ -6,9 +6,10 @@ sub index ($self) {
 }
 
 sub login ($self) {
-    if ($self->auth($self->param('username'), $self->param('password'))) {
+    my $user = $self->param('username');
+    if ($self->auth($user, $self->param('password'))) {
         $self->session(auth => 1);
-        return $self->redirect_to('accounts');
+        return $self->redirect_to($self->url_for('accounts')->query(username => $user));
     }
     $self->flash(error => 'Invalid login');
     $self->redirect_to('index');
@@ -29,8 +30,12 @@ sub authorize ($self) {
 }
 
 sub accounts ($self) {
+    my $user = $self->param('username');
     my $accounts = $self->list_accounts;
-    $self->render(accounts => $accounts);
+    $self->render(
+        accounts => $accounts,
+        user     => $user,
+    );
 };
 
 sub new_user ($self) {
