@@ -88,7 +88,7 @@ __PACKAGE__->add_columns(
 
 =over 4
 
-=item * L</id>
+=item * C<id>
 
 =back
 
