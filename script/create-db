@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+use Mojolicious::Lite;
+
+use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(EncodedColumn-Bcrypt);
+
+use lib 'lib';
+use AuthEg::DB::Plugin;
+plugin 'AuthEg::DB::Plugin';
+
+unlink 'auth.db';
+
+my $command = "sqlite3 auth.db < auth-eg.sql";
+system($command) == 0 or die "system $command failed: $?";
+
+app->add('fred', 'flintstone');
