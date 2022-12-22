@@ -22,15 +22,13 @@ $t->get_ok('/')
 $t->post_ok('/login' => form => { username => $config->{test_user}, password => $config->{test_pass} })
   ->status_is(200)
   ->session_ok
-  ->session_is('/auth' => '1');
+  ->session_is('/auth' => 1);
 
 # Test accessing a protected page
-$t->get_ok('/auth')
+$t->get_ok('/authed/accounts')
   ->status_is(200)
-  ->content_like(qr/Authorized/)
-  ->element_exists('form input[name="username"]')
-  ->element_exists('form input[name="password"]')
-  ->element_exists('form input[type="submit"]');
+  ->content_like(qr/Accounts/)
+  ->element_exists('a[href="/logout"]');
 
 # Test if HTML login form shows up again after logout
 $t->get_ok('/logout')
