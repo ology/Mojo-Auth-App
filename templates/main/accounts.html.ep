@@ -3,13 +3,13 @@
 %= include 'main/_flash'
 <p><b>New user:</b></p>
 %= form_for add => (method => 'post') => begin
-    %= input => 'hidden', $user
     %= hidden_field user => $user
     %= include 'main/_credentials'
     %= submit_button 'Add'
 %= end
 % if ($accounts) {
     %= tag 'hr'
+    <b>Users:</b>
     <ul>
 %   while (my $account = $accounts->next) {
       <li>
