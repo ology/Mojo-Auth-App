@@ -33,7 +33,7 @@ sub accounts ($self) {
     $self->render(accounts => $accounts);
 };
 
-sub add ($self) {
+sub new_user ($self) {
     my $result = $self->add($self->param('username'), $self->param('password'));
 
     if ( $result ) {
