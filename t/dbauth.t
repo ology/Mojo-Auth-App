@@ -21,6 +21,7 @@ is $t->app->auth($test_user, $test_pass), 1, 'auth';
 
 my $got = $t->app->list_accounts;
 isa_ok $got, 'DBIx::Class::ResultSet';
+ok $got->count >= 1, 'count';
 
 ok $t->app->remove($user->id), 'remove';
 ok !$t->app->remove(0), 'bogus';
