@@ -3,7 +3,7 @@ use Test::More;
 use Test::Mojo::Session;
 use Mojo::File qw( path );
 
-my $t = Test::Mojo::Session->new( path('script/calendar_genie') );
+my $t = Test::Mojo::Session->new( path('script/auth_eg') );
 
 my $config = $t->app->config;
 
