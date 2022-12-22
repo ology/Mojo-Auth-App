@@ -20,7 +20,7 @@ subtest form => sub {
 };
 
 subtest login => sub {
-my $payload = { username => $config->{test_user}, password => $config->{test_pass} };
+  my $payload = { username => $config->{test_user}, password => $config->{test_pass} };
   $t->post_ok($t->app->url_for('login'), form => $payload)
     ->status_is(200)
     ->session_ok
