@@ -12,7 +12,7 @@ sub login ($self) {
         $self->redirect_to($self->url_for('accounts')->query(user => $user));
     }
     $self->flash(error => 'Invalid login');
-    $self->redirect_to('index');
+    $self->redirect_to($self->url_for('accounts')->query(user => $user));
 }
 
 sub logout ($self) {
