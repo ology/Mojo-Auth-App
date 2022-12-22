@@ -9,7 +9,7 @@ sub login ($self) {
     my $user = $self->param('username');
     if ($self->auth($user, $self->param('password'))) {
         $self->session(auth => 1);
-        return $self->redirect_to($self->url_for('accounts')->query(username => $user));
+        return $self->redirect_to($self->url_for('accounts')->query(user => $user));
     }
     $self->flash(error => 'Invalid login');
     $self->redirect_to('index');
@@ -30,7 +30,7 @@ sub authorize ($self) {
 }
 
 sub accounts ($self) {
-    my $user = $self->param('username');
+    my $user = $self->param('user');
     my $accounts = $self->list_accounts;
     $self->render(
         accounts => $accounts,
@@ -39,6 +39,8 @@ sub accounts ($self) {
 };
 
 sub new_user ($self) {
+    my $user = $self->param('user');
+
     my $result = $self->add($self->param('username'), $self->param('password'));
 
     if ( $result ) {
@@ -48,7 +50,7 @@ sub new_user ($self) {
         $self->flash(error => 'Cannot add user!');
     }
 
-    $self->redirect_to('accounts');
+    $self->redirect_to($self->url_for('accounts')->query(user => $user));
 }
 
 sub delete_user ($self) {
