@@ -34,7 +34,7 @@ subtest login => sub {
 };
 
 subtest protected => sub {
-  $t->get_ok($t->app->url_for('accounts')->query(user => $config->{test_user}))
+  $t->get_ok($t->app->url_for('accounts'))
     ->status_is(200)
     ->content_like(qr/Accounts/)
     ->content_like(qr/$config->{test_user}/)
