@@ -25,4 +25,4 @@
 % }
 %= tag 'hr'
 %= tag 'p'
-%= link_to Logout => 'logout'
+%= link_to Logout => 'logout', class => 'btn btn-sm btn-outline-dark'
