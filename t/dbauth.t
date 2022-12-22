@@ -16,7 +16,7 @@ my $test_pass = 'abc123';
 my $user = $t->app->add($test_user, $test_pass);
 isa_ok $user, 'AuthEg::DB::Schema::Result::Account';
 
-is $t->app->auth($test_user, $test_pass), 1, 'auth';
+ok $t->app->auth($test_user, $test_pass), 'auth';
 
 my $got = $t->app->list_accounts;
 isa_ok $got, 'DBIx::Class::ResultSet';
