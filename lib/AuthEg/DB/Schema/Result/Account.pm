@@ -27,7 +27,7 @@ EncodedColumn
 
 =cut
 
-__PACKAGE__->load_components(qw/ EncodedColumn /);
+__PACKAGE__->load_components(qw(EncodedColumn));
 
 =head1 ACCESSORS
 
@@ -58,8 +58,8 @@ __PACKAGE__->load_components(qw/ EncodedColumn /);
 =cut
 
 __PACKAGE__->add_columns(
-  id       => { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  name     => { data_type => "text", is_nullable => 0, size => 255 },
+  id       => { data_type => 'integer', is_auto_increment => 1, is_nullable => 0 },
+  name     => { data_type => 'text', is_nullable => 0, size => 255 },
   password => {
     data_type           => 'text',
     is_nullable         => 0,
