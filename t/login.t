@@ -25,7 +25,7 @@ $t->post_ok('/login' => form => { username => $config->{test_user}, password => 
   ->session_is('/auth' => 1);
 
 # Test accessing a protected page
-$t->get_ok('/authed/accounts')
+$t->get_ok('/authed/accounts?user=foo')
   ->status_is(200)
   ->content_like(qr/Accounts/)
   ->element_exists('a[href="/logout"]');
