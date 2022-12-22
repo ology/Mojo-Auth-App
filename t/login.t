@@ -33,7 +33,7 @@ subtest protected => sub {
     ->status_is(200)
     ->content_like(qr/Accounts/)
     ->content_like(qr/$config->{test_user}/)
-    ->element_exists('a[href="/logout"]');
+    ->element_exists('a[href="' . $t->app->url_for('logout') . '"]');
 };
 
 subtest logout => sub {
