@@ -6,7 +6,6 @@ use Mojo::File qw(curfile);
 my $t = Test::Mojo->new(curfile->dirname->sibling('script/auth_eg'));
 
 my $config = $t->app->config;
-
 isa_ok $config, 'HASH';
 
 isa_ok $t->app->schema, 'AuthEg::DB::Schema';
