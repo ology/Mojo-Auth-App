@@ -1,4 +1,5 @@
 %= tag h1 => 'Accounts'
+%= tag h3 => 'Hello ' . $user . '!'
 %= include 'main/_flash'
 <p><b>New user:</b></p>
 %= form_for add => (method => 'post') => begin
