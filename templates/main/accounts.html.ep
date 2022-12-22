@@ -14,4 +14,3 @@ New user:
 % }
 %= tag 'p'
 %= link_to Logout => 'logout'
-
