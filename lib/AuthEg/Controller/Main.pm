@@ -17,6 +17,7 @@ sub login ($self) {
 
 sub logout ($self) {
     delete $self->session->{auth};
+    delete $self->session->{user};
     $self->redirect_to('index');
 };
 
