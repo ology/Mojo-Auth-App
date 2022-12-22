@@ -6,7 +6,6 @@ use Mojo::File qw( path );
 my $t = Test::Mojo::Session->new( path('script/auth_eg') );
 
 my $config = $t->app->config;
-
 isa_ok $config, 'HASH';
 
 # Allow 302 redirect responses
