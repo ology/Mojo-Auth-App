@@ -8,8 +8,8 @@ sub index ($self) {
 sub login ($self) {
     my $user = $self->param('username');
     if ($self->auth($user, $self->param('password'))) {
-        $self->session(auth => 1);
-        return $self->redirect_to($self->url_for('accounts')->query(user => $user));
+        $self->session(auth => 1, user => $user);
+        $self->redirect_to($self->url_for('accounts')->query(user => $user));
     }
     $self->flash(error => 'Invalid login');
     $self->redirect_to('index');
@@ -54,7 +54,8 @@ sub new_user ($self) {
 }
 
 sub delete_user ($self) {
-    my $id = $self->param('id');
+    my $user = $self->param('user');
+    my $id   = $self->param('id');
 
     my $result = $self->remove($id);
 
@@ -65,7 +66,7 @@ sub delete_user ($self) {
         $self->flash(error => 'Cannot remove user!');
     }
 
-    $self->redirect_to('accounts');
+    $self->redirect_to($self->url_for('accounts')->query(user => $user));
 };
 
 1;
