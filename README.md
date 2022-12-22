@@ -7,8 +7,6 @@ Example of bcrypt authentication with Mojolicious
     cpanm --installdeps .
     perl script/create-db
     morbo script/auth_eg
-    open http://127.0.0.1:3000/
-
-Login as fred / flintstone
+    open http://127.0.0.1:3000/ # Then login as fred / flintstone
 
 ![AuthEg-UI](AuthEg-UI.png)
