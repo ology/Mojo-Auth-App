@@ -17,7 +17,7 @@
 %   while (my $account = $accounts->next) {
       <li>
 %     if ($account->name ne $user) {
-        <a href="<%= url_for('remove')->query(id => $account->id, user => $user) %>" class="btn btn-sm btn-secondary" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;"></a>
+        <a href="<%= url_for('remove')->query(id => $account->id, user => $user) %>" class="btn btn-sm btn-secondary" title="Remove this user" onclick="if(!confirm('Remove user <%= $account->name %>?')) return false;"></a>
 %     }
         <b><%= ucfirst $account->name %></b> (<%= $account->id %>) <%= $account->created %>
       </li>
