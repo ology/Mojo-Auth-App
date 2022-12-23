@@ -43,7 +43,7 @@ sub new_user ($self) {
     my $result = $self->add($self->param('username'), $self->param('password'));
 
     if ($result) {
-        $self->flash(message => 'User added');
+        $self->flash(message => 'User ' . $result->id . ' added');
     }
     else {
         $self->flash(error => 'Cannot add user!');
@@ -58,7 +58,7 @@ sub delete_user ($self) {
     my $result = $self->remove($id);
 
     if ($result) {
-        $self->flash(message => 'User removed');
+        $self->flash(message => "User $id removed");
     }
     else {
         $self->flash(error => 'Cannot remove user!');
