@@ -53,7 +53,7 @@ sub new_user ($self) {
 }
 
 sub delete_user ($self) {
-    my $id   = $self->param('id');
+    my $id = $self->param('id');
 
     my $result = $self->remove($id);
 
