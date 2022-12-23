@@ -26,7 +26,11 @@ sub register {
         return 0
             unless $user && $pass;
 
-        my $result = $c->schema->resultset('Account')->create({ name => $user, password => $pass });
+        my $result = $c->schema->resultset('Account')->search({ name => $user })->first;
+        return 0
+            if $result;
+
+        $result = $c->schema->resultset('Account')->create({ name => $user, password => $pass });
 
         return $result;
     });
