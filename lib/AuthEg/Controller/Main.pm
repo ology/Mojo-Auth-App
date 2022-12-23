@@ -12,9 +12,17 @@ sub authorize ($self) {
 sub index ($self) { $self->render; }
 
 sub login ($self) {
-    my $user = $self->param('username');
+    my $v = $self->validation;
+    $v->required('username')->size(3, 50);
+    $v->required('password')->size(3, 50);
+    if ($v->error('username') || $v->error('password')) {
+      $self->flash(error => 'Invalid login');
+      return $self->redirect_to('index');
+    }
 
-    if ($self->auth($user, $self->param('password'))) {
+    my $user = $v->param('username');
+
+    if ($self->auth($user, $v->param('password'))) {
         $self->session(auth => 1, user => $user);
         return $self->redirect_to('accounts');
     }
@@ -40,7 +48,15 @@ sub accounts ($self) {
 };
 
 sub new_user ($self) {
-    my $result = $self->add($self->param('username'), $self->param('password'));
+    my $v = $self->validation;
+    $v->required('username')->size(3, 50);
+    $v->required('password')->size(3, 50);
+    if ($v->error('username') || $v->error('password')) {
+      $self->flash(error => 'Invalid submission');
+      return $self->redirect_to('accounts');
+    }
+
+    my $result = $self->add($v->param('username'), $v->param('password'));
 
     if ($result) {
         $self->flash(message => 'User ' . $result->id . ' added');
