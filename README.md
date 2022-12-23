@@ -8,6 +8,6 @@ Example of bcrypt authentication with Mojolicious
     perl script/create-db
     morbo script/auth_eg
     open http://127.0.0.1:3000/
-    # then login as fred / flintstone
+    # login as fred / flintstone
 
 ![AuthEg-UI](AuthEg-UI.png)
